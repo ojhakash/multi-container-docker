@@ -4,7 +4,7 @@ services:
 before_install:
   - docker build -t akashoj/react-test -f ./client/Dockerfile.dev ./client
 
-after-success:
+script:
   - docker build -t akashoj/multi-client ./client
   - docker build -t akashoj/multi-server ./server
   - docker build -t akashoj/multi-worker ./worker
