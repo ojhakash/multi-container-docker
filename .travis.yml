@@ -1,6 +1,10 @@
 sudo: required
 services:
   - docker
+berfore-install:
+
+script:
+  
 after-success:
   - docker build -t akashoj/multi-client ./client
   - docker build -t akashoj/multi-server ./server
