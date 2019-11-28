@@ -1,15 +1,15 @@
 sudo: required
 services:
   - docker
-before_install:
-  - docker build -t akashoj/react-test -f ./client/Dockerfile.dev ./client
+# before_install:
+#   - docker build -t akashoj/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker build -t akashoj/multi-client ./client
   - docker build -t akashoj/multi-server ./server
   - docker build -t akashoj/multi-worker ./worker
   - docker build -t akashoj/multi-nginx ./nginx
-  - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push akashoj/multi-client
   - docker push akashoj/multi-server
   - docker push akashoj/multi-worker
